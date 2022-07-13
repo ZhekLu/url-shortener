@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'simplify_app.apps.SimplifyAppConfig',
-    'authentication.apps.AuthenticationConfig',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'simplify_app.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
