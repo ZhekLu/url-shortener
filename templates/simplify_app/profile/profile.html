@@ -1,0 +1,161 @@
+{% extends "layout/base.html" %}
+
+{% load static %}
+
+{% block title %} Widgets {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+	<div class="content">
+		<div class="page-inner">
+            <!-- Welcome Info -->
+			<h4 class="page-title">Profile of
+                {% if user.first_name and user.last_name %}
+                    {{ user.first_name }} {{ user.last_name }}
+                {% else %}
+                    {{ user.username }}
+                {% endif %}
+            </h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-info card-annoucement card-round">
+                        <div class="card-body text-center">
+                            <div class="card-opening">
+                                {% if user.first_name %}
+                                Welcome {{ user.first_name }},
+                                {% else %}
+                                Welcome {{ user.username }},
+                                {% endif %}
+                            </div>
+                            <div class="card-desc">
+                                Create beautiful and simple URLs!
+                            </div>
+                            <div class="card-detail">
+                                <a class="btn btn-light btn-rounded" href="#">Add URL</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <!-- Picture posts count info -->
+					<div class="card card-stats card-round">
+						<div class="card-body">
+							<div class="row align-items-center">
+								<div class="col-icon">
+									<div class="icon-big text-center icon-info bubble-shadow-small">
+										<i class="flaticon-interface-6"></i>
+									</div>
+								</div>
+								<div class="col col-stats ml-3 ml-sm-0">
+									<div class="numbers">
+										<p class="card-category">URLs created</p>
+										<h4 class="card-title">{{ urls.count }}</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<!-- User Urls -->
+			<h4 class="page-title">Your URLs</h4>
+            {% if urls %}
+                <div class="row">
+                    {% for url in urls %}
+                    <div class="col-md-4">
+                        <div class="card card-post card-round">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="info-post ml-2">
+                                        <p class="date text-muted">{{ url.created_at }}</p>
+                                    </div>
+                                </div>
+                                <div class="separator-solid"></div>
+                                <h3 class="card-title">
+                                    <a href="{{ url.simple_url }}">
+                                        {{ url.simple_url }}
+                                    </a>
+                                </h3>
+                                <p class="card-text">
+                                    <a href="{{ url.original_url }}">
+                                        {{ url.original_url }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+            <h2 class="mb-2">You don't have any URLs yet.</h2>
+            {% endif %}
+		</div>
+	</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="{% static "/assets/js/setting-demo.js" %}"></script>
+	<script>
+		$('#lineChart').sparkline([102,109,120,99,110,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#177dff',
+			fillColor: 'rgba(23, 125, 255, 0.14)'
+		});
+
+		$('#lineChart2').sparkline([99,125,122,105,110,124,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#f3545d',
+			fillColor: 'rgba(243, 84, 93, .14)'
+		});
+
+		$('#lineChart3').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#ffa534',
+			fillColor: 'rgba(255, 165, 52, .14)'
+		});
+
+		$('#lineChart4').sparkline([102,109,120,99,110,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: 'rgba(255, 255, 255, .5)',
+			fillColor: 'rgba(255, 255, 255, .15)'
+		});
+
+		$('#lineChart5').sparkline([99,125,122,105,110,124,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: 'rgba(255, 255, 255, .5)',
+			fillColor: 'rgba(255, 255, 255, .15)'
+		});
+
+		$('#lineChart6').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: 'rgba(255, 255, 255, .5)',
+			fillColor: 'rgba(255, 255, 255, .15)'
+		});
+	</script>
+
+{% endblock javascripts %}

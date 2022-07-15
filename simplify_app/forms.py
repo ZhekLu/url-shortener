@@ -56,21 +56,15 @@ class ChangeUserInfoForm(forms.ModelForm):
                 "class": "form-control"
             }
         )
-        self.fields['send_messages'].widget = forms.CheckboxInput(
-            attrs={
-                "placeholder": "Want to be notified by email",
-                "class": "form-control"
-            }
-        )
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name', 'send_messages')
+        fields = ('username', 'email', 'first_name', 'last_name')
 
 
-class PSPasswordChangeForm(PasswordChangeForm):
+class UserPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
-        super(PSPasswordChangeForm, self).__init__(*args, **kwargs)
+        super(PasswordChangeForm, self).__init__(*args, **kwargs)
         self.fields['old_password'].widget = forms.PasswordInput(
             attrs={
                 "autocomplete": "current-password",
