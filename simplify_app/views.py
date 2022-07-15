@@ -5,7 +5,7 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.views.generic import UpdateView
 from django.urls import reverse_lazy
 
-from simplify_app.forms import ChangeUserInfoForm, UserPasswordChangeForm
+from simplify_app.forms import ChangeUserInfoForm, UserPasswordChangeForm, LoginForm
 from simplify_app.models import SimpleUrl, User
 
 
@@ -44,3 +44,11 @@ class UserPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
 
 
 # Login
+
+class UserLoginView(LoginView):
+    form_class = LoginForm
+    template_name = 'simplify_app/authentication/login.html'
+
+
+class UserLogoutView(LoginRequiredMixin, LogoutView):
+    template_name = 'simplify_app/home/index.html'

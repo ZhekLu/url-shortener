@@ -7,7 +7,7 @@ from .models import User, SimpleUrl
 # from .apps import user_registered
 
 
-# User
+# Auth
 
 class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -26,6 +26,8 @@ class LoginForm(AuthenticationForm):
                 "class": "form-control"
             })
 
+
+# Edit User
 
 class ChangeUserInfoForm(forms.ModelForm):
     email = forms.EmailField(required=True, label='Email address',
