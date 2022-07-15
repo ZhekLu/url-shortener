@@ -10,6 +10,7 @@ from django.urls import reverse_lazy
 
 from simplify_app.forms import ChangeUserInfoForm, UserPasswordChangeForm, LoginForm, SimpleUrlForm
 from simplify_app.models import SimpleUrl, User
+from simplify_app.utilities import create_simple_url
 
 
 # App
@@ -20,11 +21,8 @@ def index(request):
         form = SimpleUrlForm(request.POST)
         if form.is_valid():
             original_url = form.cleaned_data['original_url']
-            simple_url_id = str(uuid.uuid4())[:5]
+            simple_url_id = create_simple_url(original_url, request.user)
             result_link = 'http://' + get_current_site(request).name + '/' + simple_url_id
-            simple_url = SimpleUrl(original_url=original_url, simple_url_id=simple_url_id,
-                                   user=request.user)
-            simple_url.save()
 
     else:
         form = SimpleUrlForm()
@@ -40,7 +38,8 @@ def result(request, pk):
 
 @login_required
 def profile(request):
-    context = {'urls': SimpleUrl.objects.filter(user=request.user.pk)}
+    context = {'urls': SimpleUrl.objects.filter(user=request.user.pk),
+               'link_start': 'http://' + get_current_site(request).name + '/'}
     return render(request, 'simplify_app/profile/profile.html', context)
 
 

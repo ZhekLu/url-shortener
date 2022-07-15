@@ -34,7 +34,7 @@
                                 Create beautiful and simple URLs!
                             </div>
                             <div class="card-detail">
-                                <a class="btn btn-light btn-rounded" href="#">Add URL</a>
+                                <a class="btn btn-light btn-rounded" href="{% url 'simplify_app:index' %}">Create URL</a>
                             </div>
                         </div>
                     </div>
@@ -63,32 +63,29 @@
 			<!-- User Urls -->
 			<h4 class="page-title">Your URLs</h4>
             {% if urls %}
-                <div class="row">
-                    {% for url in urls %}
-                    <div class="col-md-4">
-                        <div class="card card-post card-round">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="info-post ml-2">
-                                        <p class="date text-muted">{{ url.created_at }}</p>
+{#                <div class="row">#}
+                        <div class="col-md-6 ml-auto mr-auto">
+                            <div class="card full-height">
+						        <div class="card-body">
+                                    {% for url in urls %}
+                                    <div class="d-flex">
+                                        <div class="flex-1 ml-3 pt-1">
+                                            <h3 class="fw-bold mb-1 text-info">
+                                                <a href="{{ link_start }}{{ url.simple_url_id }}">
+                                                {{ link_start }}{{ url.simple_url_id }}
+                                                    <a>
+                                            </h3>
+                                            <span class="text-muted">{{ url.original_url}}</span>
+                                        </div>
+                                        <div class="float-right pt-1">
+                                        <small class="text-muted">{{ url.created_at }}</small>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="separator-solid"></div>
-                                <h3 class="card-title">
-                                    <a href="{{ url.simple_url }}">
-                                        {{ url.simple_url }}
-                                    </a>
-                                </h3>
-                                <p class="card-text">
-                                    <a href="{{ url.original_url }}">
-                                        {{ url.original_url }}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
+                                        <div class="separator-solid"></div>
+                                    {% endfor %}
+						        </div>
+					        </div>
+						</div>
             {% else %}
             <h2 class="mb-2">You don't have any URLs yet.</h2>
             {% endif %}
