@@ -87,3 +87,20 @@ class UserPasswordChangeForm(PasswordChangeForm):
                 "placeholder": "New password confirmation",
                 "class": "form-control"
             })
+
+
+# URL form
+
+class SimpleUrlForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SimpleUrlForm, self).__init__(*args, **kwargs)
+        self.fields['original_url'].widget = forms.TextInput(
+            attrs={
+                "placeholder": "URL to simplify",
+                "class": "form-control"
+            })
+
+    class Meta:
+        model = SimpleUrl
+        fields = ('original_url', )
+        # widgets = {'user': forms.HiddenInput, 'simple_url': forms.HiddenInput}

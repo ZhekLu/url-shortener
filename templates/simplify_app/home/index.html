@@ -6,7 +6,61 @@
 
 	<div class="content">
 		<div class="page-inner">
-			Works
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+                        <!-- Post -->
+						<div class="col-md-6 ml-auto mr-auto">
+                            <div class="card card-post card-round">
+                                <div class="card-header">
+                                    <div class="card-title text-center">
+                                        <span>
+                                            Simplify URL
+                                        </span>
+                                    </div>
+                                </div>
+                                <form method="post">
+
+                                    {% csrf_token %}
+
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Enter a long URL to make a SimpleURL</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-share-alt"></i>
+                                                            </span>
+                                                        </div>
+                                                        {{ form.original_url }}
+                                                    </div>
+                                                </div>
+                                                {% if result_link %}
+                                                <div class="form-group text-center">
+                                                    <label>Simple URL</label>
+                                                    <i class="fas fa-magic"></i>
+                                                    <div class="mb-3">
+                                                        <a class="text-info h4" href="{{ result_link }}">
+                                                            {{ result_link }}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-action text-center">
+                                        <button type="submit" class="btn btn-success btn-border w-70">Make SimpleURL!</button>
+                                        &nbsp; &nbsp;
+                                    </div>
+                                </form>
+                            </div>
+						</div>
+					</div>
+                </div>
+            </div>
 		</div>
 	</div>
 

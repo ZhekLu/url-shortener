@@ -13,10 +13,10 @@ class User(AbstractUser):
 
 
 class SimpleUrl(models.Model):
-    original_url = models.URLField(default='https://example.com', db_index=True, verbose_name='URL to simplify')
-    simple_url = models.URLField(default='https://simple_url', verbose_name='Simple URL')
+    original_url = models.URLField(default='', db_index=True, verbose_name='URL to simplify')
+    simple_url_id = models.CharField(default='', db_index=True, verbose_name='Simple URL id', max_length=10)
     user = models.ForeignKey(User, blank=True, null=True, on_delete=models.PROTECT, verbose_name='Creator')
-    created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Published')
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Created')
 
     class Meta:
         verbose_name = 'URL'
