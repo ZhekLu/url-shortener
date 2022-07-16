@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.core.signing import BadSignature
 from django.contrib.sites.shortcuts import get_current_site
+from django.http import Http404
 from django.views.generic import UpdateView, CreateView, TemplateView
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -30,7 +31,10 @@ def index(request):
 
 
 def result(request, pk):
-    url = SimpleUrl.objects.get(simple_url_id=pk)
+    try:
+        url = get_object_or_404(SimpleUrl, simple_url_id=pk)
+    except Http404:
+        return render(request, 'simplify_app/home/invalid_url.html')
     return redirect(url.original_url)
 
 

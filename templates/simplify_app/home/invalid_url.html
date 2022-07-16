@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+
+
+{% load static %}
+
+{% block title %}Log out{% endblock %}
+
+{% block content %}
+    <div class="content">
+		<div class="page-inner">
+			<h4 class="page-title">Such URL haven't been created yet.</h4>
+            <a href="{% url 'simplify_app:index' %}"
+               class="btn btn-success btn-border btn-lg fw-bold mb-3">Create new URL</a>
+        </div>
+    </div>
+{% endblock %}
