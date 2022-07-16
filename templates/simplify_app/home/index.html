@@ -1,0 +1,130 @@
+{% extends "layout/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="content">
+		<div class="page-inner">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+                        <!-- Post -->
+						<div class="col-md-6 ml-auto mr-auto">
+                            <div class="card card-post card-round">
+                                <div class="card-header">
+                                    <div class="card-title text-center">
+                                        <span>
+                                            Simplify URL
+                                        </span>
+                                    </div>
+                                </div>
+                                <form method="post">
+
+                                    {% csrf_token %}
+
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Enter a long URL to make a SimpleURL</label>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="fas fa-share-alt"></i>
+                                                            </span>
+                                                        </div>
+                                                        {{ form.original_url }}
+                                                    </div>
+                                                </div>
+                                                {% if result_link %}
+                                                <div class="form-group text-center">
+                                                    <label>Simple URL</label>
+                                                    <i class="fas fa-magic"></i>
+                                                    <div class="mb-3">
+                                                        <a class="text-info h4" href="{{ result_link }}">
+                                                            {{ result_link }}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-action text-center">
+                                        <button type="submit" class="btn btn-success btn-border w-70">Make SimpleURL!</button>
+                                        &nbsp; &nbsp;
+                                    </div>
+                                </form>
+                            </div>
+						</div>
+					</div>
+                </div>
+            </div>
+		</div>
+	</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="{% static "/assets/js/setting-demo.js" %}"></script>
+	<script>
+		$('#lineChart').sparkline([102,109,120,99,110,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#177dff',
+			fillColor: 'rgba(23, 125, 255, 0.14)'
+		});
+
+		$('#lineChart2').sparkline([99,125,122,105,110,124,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#f3545d',
+			fillColor: 'rgba(243, 84, 93, .14)'
+		});
+
+		$('#lineChart3').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#ffa534',
+			fillColor: 'rgba(255, 165, 52, .14)'
+		});
+
+		$('#lineChart4').sparkline([102,109,120,99,110,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: 'rgba(255, 255, 255, .5)',
+			fillColor: 'rgba(255, 255, 255, .15)'
+		});
+
+		$('#lineChart5').sparkline([99,125,122,105,110,124,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: 'rgba(255, 255, 255, .5)',
+			fillColor: 'rgba(255, 255, 255, .15)'
+		});
+
+		$('#lineChart6').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: 'rgba(255, 255, 255, .5)',
+			fillColor: 'rgba(255, 255, 255, .15)'
+		});
+	</script>
+
+{% endblock javascripts %}

@@ -1,0 +1,8 @@
+Dear, {{ user.username }}.
+
+You registered in SimplifyUrl site.
+You should to activate your account to confirm your email address.
+Follow link:
+{{ host }}{% url 'paintsite:register_activate' sign=sign %}
+
+SimplifyUrl.

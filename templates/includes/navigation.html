@@ -1,0 +1,89 @@
+{% load static %}
+		<div class="main-header">
+
+			<!-- Logo Header -->
+			<div class="logo-header" data-background-color="dark2">
+
+				<a href="{% url 'simplify_app:index' %}" class="logo">
+                    <img src="{% static "/assets/img/logo.svg" %}" alt="navbar brand" class="navbar-brand">
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+				</button>
+				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+				<div class="nav-toggle">
+					<button class="btn btn-toggle toggle-sidebar">
+						<i class="icon-menu"></i>
+					</button>
+				</div>
+			</div>
+			<!-- End Logo Header -->
+
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="dark">
+
+
+				<div class="container-fluid">
+
+					{% block additional_navs %}{% endblock %}
+
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                        <li class="nav-item toggle-nav-search hidden-caret">
+							<a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
+								<i class="fa fa-search"></i>
+							</a>
+						</li>
+                        <li class="nav-item hidden-caret">
+							<a class="nav-link" href="{% url 'simplify_app:index' %}" role="button" aria-expanded="false">
+								<i class="fa fa-home"></i>
+							</a>
+						</li>
+                        {% if user.is_authenticated %}
+						<li class="nav-item dropdown hidden-caret">
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <div class="avatar-sm float-left mr-2">
+                                    <span class="avatar-title rounded-circle text-white">
+                                                    {{ user.get_initial }}
+                                    </span>
+                                </div>
+							</a>
+							<ul class="dropdown-menu dropdown-user animated fadeIn">
+								<div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;"><div class="dropdown-user-scroll scrollbar-outer scroll-content" style="height: auto; margin-bottom: 0; margin-right: 0px; max-height: 0px;">
+									<li>
+										<div class="user-box">
+											<div class="avatar-lg">
+                                                <span class="avatar-title rounded-circle text-white">
+                                                    {{ user.get_initial }}
+                                                </span>
+                                            </div>
+											<div class="u-text">
+												<h4>
+													{{ user.username }}
+												</h4>
+												<p class="text-muted">
+													{{ user.email }}
+												</p>
+												<a href="{% url 'simplify_app:profile' %}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="{% url 'simplify_app:profile' %}">My URLs</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="{% url 'simplify_app:profile_change' %}">Account Setting</a>
+										<a class="dropdown-item" href="{% url 'simplify_app:password_change' %}">Change Password</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="#">Logout</a>
+									</li>
+								</div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
+							</ul>
+						</li>
+                        {% endif %}
+					</ul>
+				</div>
+			</nav>
+            <!-- End Navbar -->
+        </div>
