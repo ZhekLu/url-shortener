@@ -15,3 +15,7 @@ __pypackages__/
 # Environments
 .env
 .venv/
+
+# Other
+makefile
+temp.txt
