@@ -1,0 +1,112 @@
+{% extends "layout/base.html" %}
+
+{% block title %} Register {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="page-inner">
+        <h4 class="page-title">Register a New User</h4>
+        <div class="row">
+            <div class="col-4 ml-auto mr-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title text-center">
+                            <span>
+                                Personal data
+                            </span>
+                        </div>
+                    </div>
+                    <form method="post">
+
+                        {% csrf_token %}
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+
+                                    <div class="form-group">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="basic-addon1">@</span>
+											</div>
+                                            {{ form.username }}
+										</div>
+									</div>
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="flaticon-envelope-3"></i>
+                                                </span>
+                                            </div>
+                                            {{ form.email }}
+                                        </div>
+                                        <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="flaticon-lock"></i>
+                                                </span>
+                                            </div>
+                                            {{ form.password }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="flaticon-lock"></i>
+                                                </span>
+                                            </div>
+                                            {{ form.password_confirm }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="flaticon-user"></i>
+                                                </span>
+                                            </div>
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="flaticon-user"></i>
+                                                </span>
+                                            </div>
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action text-center">
+                            <button type="submit" class="btn btn-success w-50 btn-border">Register</button>
+                            &nbsp; &nbsp;
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

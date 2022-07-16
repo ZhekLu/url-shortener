@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+
+
+{% load static %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+    <div class="content">
+		<div class="page-inner">
+			<h4 class="page-title">Registration</h4>
+            <h2>User registration complete.</h2>
+            <h2>Check your email address to activate your account.</h2>
+            <a href="{% url 'simplify_app:index' %}"
+               class="btn btn-info btn-border btn-lg fw-bold mb-3">Back to main page</a>
+            <a href="{% url 'simplify_app:login' %}"
+               class="btn btn-success btn-border btn-lg fw-bold mb-3">Sign In</a>
+        </div>
+    </div>
+{% endblock %}

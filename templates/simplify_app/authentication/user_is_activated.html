@@ -1,0 +1,20 @@
+{% extends 'layout/base.html' %}
+
+
+{% load static %}
+
+{% block title %} Activation {% endblock %}
+
+{% block content %}
+    <div class="content">
+		<div class="page-inner">
+			<h4 class="page-title">Activation</h4>
+            <h2>User with this name was activated early.</h2>
+            <h2>You can log in to the site.</h2>
+            <a href="{% url 'simplify_app:login' %}"
+               class="btn btn-success btn-border btn-lg fw-bold mb-3">Sign In</a>
+            <a href="{% url 'simplify_app:index' %}"
+               class="btn btn-info btn-border btn-lg fw-bold mb-3">Back to main page</a>
+        </div>
+    </div>
+{% endblock %}
