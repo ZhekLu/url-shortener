@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+
+
+{% load static %}
+
+{% block title %}Log out{% endblock %}
+
+{% block content %}
+    <div class="content">
+		<div class="page-inner">
+			<h4 class="page-title">We will be waiting for your return.</h4>
+            <a href="{% url 'simplify_app:index' %}"
+               class="btn btn-info btn-border btn-lg fw-bold mb-3">Back to main page</a>
+        </div>
+    </div>
+{% endblock %}

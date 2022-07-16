@@ -73,7 +73,7 @@ class UserLoginView(LoginView):
 
 
 class UserLogoutView(LoginRequiredMixin, LogoutView):
-    template_name = 'simplify_app/home/index.html'
+    template_name = 'simplify_app/authentication/logout.html'
 
 
 # Register
